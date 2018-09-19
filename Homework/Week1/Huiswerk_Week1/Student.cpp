@@ -5,42 +5,33 @@
 
 //Students have an array of first and last name
 Student::Student(std::string first, std::string last) {
-	name[0] = first;
-	name[1] = last;
+	names[0] = first;
+	names[1] = last;
 	totalEC = 0;
-	std::vector<Student> *signedInModules = {};
+	//std::vector<Student> *signedInModules = {};
 }
 
-std::string Student::Name() {
-	return name[0] + " " + name[1];
+std::string Student::name() {
+	return names[0] + " " + names[1];
 }
 
-int Student::GetTotalEC() {
+int Student::getTotalEC() {
 	return totalEC;
 }
 
-void Student::UpdateEC() {
+void Student::updateEC() {
 	totalEC = 0;
 
-	/*
 	std::vector<Module*>::iterator i = signedInModules.begin();
 
+	//Iterate through modules list and get amount of EC
 	while(i != signedInModules.end()) {
-		*i.GetECAmount();
+		totalEC += i->GetECAmount();
 	}
-	*/
-
-	//for (int i = 0; i < signedInModules.size(); i++) {
-	//	Module &mod = *signedInModules[i];
-		//int amount = signedInModules[i]->GetECAmount();
-	//}
-
-	//for (size_t i = 0; i < signedInModules.size(); i++) {
-	//	totalEC += signedInModules.at(i).GetECAmount;
-	//}
 }
 
-void Student::AddModule(Module *modul) {
+//Add Module to student's modules List
+void Student::addModule(Module *modul) {
 	//if no list yet, make new one
 	//assign student at back of list
 	//maybe order them on alphabet
@@ -51,27 +42,12 @@ void Student::AddModule(Module *modul) {
 	signedInModules.push_back(modul);
 }
 
-void Student::DeleteModule(Module *modul) {
-	/*
-	std::vector<Module*>::iterator it = signedInModules.begin();
-	
-	while (it != signedInModules.end()) {
-		if (it == modul) {
-			signedInModules.erase(it);
-			break;
-		}
-		it++;
-	}
-	*/
-
-	
+//Delete module from the modules list
+void Student::deleteModule(Module *modul) {	
 	for (size_t i = 0; i < signedInModules.size(); i++) {
 		if (signedInModules.at(i) == modul) {
 			signedInModules.erase(signedInModules.begin() + i);
 			break;
 		}
 	}
-	
-	
-	//modul.DeleteStudent(this);
 }

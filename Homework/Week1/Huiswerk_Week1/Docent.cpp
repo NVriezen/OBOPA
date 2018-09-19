@@ -3,11 +3,11 @@
 
 Docent::Docent(std::string first, std::string last)
 {
-	name[0] = first;
-	name[1] = last;
+	names[0] = first;
+	names[1] = last;
 }
 
-std::string Docent::Name()
+std::string Docent::name()
 {
-	return name[0] + " " + name[1];
+	return names[0] + " " + names[1];
 }

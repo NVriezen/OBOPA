@@ -2,8 +2,6 @@
 
 #include <string>
 #include <vector>
-#include <algorithm>
-#include <iostream>
 
 #include "Student.h"
 #include "Docent.h"
@@ -11,16 +9,17 @@
 class Module {
 public:
 	Module(std::string newName, int amountEC);
-	void AddStudent(Student newStudent);
-	void AssignTeacher(Docent doc);
-	void DeleteStudent(Student stud);
-	void DeleteStudent(int index);
-	std::string Name();
-	Docent GetAssignedTeacher();
-	std::vector<Student> GetStudentList();
-	int GetECAmount();
+	void addStudent(Student newStudent);
+	void assignTeacher(Docent doc);
+	void deleteStudent(Student stud);
+	void deleteStudent(int index);
+	std::string name();
+	Docent getAssignedTeacher();
+	std::vector<Student> getStudentList();
+	int getECAmount();
+	void setEC(int input);
 private:
-	std::string name;
+	std::string names;
 	int ec;
 	Docent assignedTeacher;
 	std::vector<Student> *studentList;

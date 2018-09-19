@@ -3,7 +3,7 @@
 class Docent {
 public:
 	Docent(std::string first = "", std::string last = "");
-	std::string Name();
+	std::string name();
 private:
-	std::string name[2]; //should be an array for first and last name;
+	std::string names[2]; //should be an array for first and last name;
 };
