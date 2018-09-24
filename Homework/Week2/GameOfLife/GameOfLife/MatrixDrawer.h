@@ -5,7 +5,7 @@
 class MatrixDrawer {
 public:
 	//MatrixDrawer(int x, int y);
-	void drawMatrix(GameRules *rulesChecker, int **point);
+	int** drawMatrix(GameRules *rulesChecker, int **point);
 	void SetDimensions(int x, int y);
 	int* GetDimensions();
 private:

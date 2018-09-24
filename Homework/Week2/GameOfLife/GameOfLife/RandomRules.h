@@ -2,11 +2,11 @@
 
 #include "GameRules.h"
 
-class OriginalRules : public GameRules {
+class RandomRules : public GameRules {
 public:
+	RandomRules();
 	int RulesCheck(int, int);
-
 private:
-	int minNum = 2;
-	int maxNum = 3;
+	int minNum;
+	int maxNum;
 };

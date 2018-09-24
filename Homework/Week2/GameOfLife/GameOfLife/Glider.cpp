@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "Glider.h"
 
 Glider::Glider(int ** points, int x, int y)
