@@ -1,9 +1,9 @@
 # OBOPA
 
-## Les 2 ##
+## Les 3 ##
 
-In Student.CPP bij de UpdateEC method heb ik een aantekening gezet.
-Kijk daar alsjeblieft naar.
+Kijk AUB naar GameOfLifeDS
+Er gaat namelijk iets mis bij het berekenen van de nieuwe grid. Ondanks dat de code nauwelijks verandert is van de desktop versie.
 
-En zie ook Huiswerk_Week1.cpp.
-Na de eerst PrintList call blijft het programma hangen zonder enige error of iets. Het print de rest gewoon niet meer.
+Het huiswerk van de Decorator werkt volledig op de Nintendo DS.
+Het is met kleine aanpassingen ook weer te compilen voor andere platformen.
