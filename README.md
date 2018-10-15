@@ -1,6 +1,9 @@
 # OBOPA
 
-## Les 4 ##
+## Les 5 ##
 
-Ik heb het niet afgekregen. Die library functies gebruiken zou veel makkelijker moeten.
-Waarom is bijvoorbeeld een class een template class terwijl het alleen met integers kan werken??
+Opdracht 1 was even goed uitvogelen hoe t nou moest.
+Zoals altijd weer problemen met pointers.
+Ook mijn operator[] overload wilde het niet doen voor de Concurrent_Vector dus heb ik maar de at() functie gebruikt.
+
+Opdracht 2 is wel gelukt en was best makkelijk te doen.
