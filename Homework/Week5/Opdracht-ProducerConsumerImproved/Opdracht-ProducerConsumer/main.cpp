@@ -14,6 +14,7 @@ std::mutex mutex;
 std::mutex mute;
 
 void producer() {
+	std::unique_lock<std::mutex> locker(mute);
 	for (int i = 0; i < 500; ++i) {
 		{
 			std::lock_guard<std::mutex> guard(mutex);
@@ -21,7 +22,6 @@ void producer() {
 			c++;
 
 		}
-		std::unique_lock<std::mutex> locker(mute);
 		consumerFlag.notify_one();
 		producerFlag.wait(locker); 
     }
@@ -50,7 +50,7 @@ int main() {
 		std::thread consumerThread(consumer);
 		std::thread producerThread(producer);
 
-		consumerThread.join();
+		consumerThread.detach();
 		producerThread.join();
 		std::cout << "Net: " << c << std::endl;
 	}
