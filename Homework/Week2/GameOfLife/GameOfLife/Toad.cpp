@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "Toad.h"
 
 Toad::Toad(int** points, int x, int y)

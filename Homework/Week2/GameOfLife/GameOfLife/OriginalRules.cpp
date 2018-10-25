@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "OriginalRules.h"
 
 int OriginalRules::RulesCheck(int neighbours, int points) {

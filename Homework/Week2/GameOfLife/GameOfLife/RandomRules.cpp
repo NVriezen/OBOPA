@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "RandomRules.h"
 
 #include <random>

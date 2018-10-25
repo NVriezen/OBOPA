@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "Blink.h"
 
 Blink::Blink(int** points, int x, int y)

@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "Loaf.h"
 
 Loaf::Loaf(int** points, int x, int y)
