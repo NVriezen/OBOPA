@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "GosperGliderGun.h"
 
 GosperGliderGun::GosperGliderGun(int** points, int x, int y)

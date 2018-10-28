@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "Block.h"
 
 Block::Block(int **points, int x, int y)

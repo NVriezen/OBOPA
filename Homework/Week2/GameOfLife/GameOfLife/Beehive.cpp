@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "Beehive.h"
 
 Beehive::Beehive(int** points, int x, int y)
