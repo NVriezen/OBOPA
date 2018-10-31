@@ -2,5 +2,5 @@
 
 class GameRules {
 public: 
-	virtual int RulesCheck(int, int);
+	virtual int RulesCheck(int*, int);
 };

@@ -6,7 +6,7 @@
 #include <string>
 #include <cctype>
 
-//using namespace std;
+#include <numeric> //Voor opdracht 2.3, want dit is tien keer makkelijker. Het is te begrijpen en het werkt. Transform geeft vage errors.
 
 void print(std::vector<std::string> words);
 
@@ -39,15 +39,25 @@ int main() {
 
 	//2)
 	std::vector<std::string> coloursCopy2(colours);
+	/* //Geen idee waarom dit het niet doet? Ik ga door elk woord heen en elke char van dat woord?
 	for (auto col : coloursCopy2) {
-		std::transform(col.begin(), col.end(), col.begin(), ::toupper);
+		for (auto ch : col) {
+			std::transform(col.begin(), col.end(), col.begin(), ::toupper);
+			ch = toupper(ch);
+		}
+	}
+	*/
+
+	for (int i = 0; i < coloursCopy2.size(); i++) {
+		for (int j = 0; j < coloursCopy2[i].length(); j++) {
+			coloursCopy2[i][j] = toupper(coloursCopy2[i][j]);
+		}
 	}
 
 	print(coloursCopy2);
 
 	//3)
 	std::vector<std::string> noDuplicates(colours);// = colours;
-	//noDuplicates.swap(colours);
 	std::vector<std::string>::iterator it;
 	it = unique_copy(colours.begin(), colours.end(), noDuplicates.begin());
 	noDuplicates.resize(distance(noDuplicates.begin(), it));
@@ -78,7 +88,6 @@ int main() {
 	//2)
 	std::cout << "--- BEGIN ---" << std::endl;
 	for (auto word : numbers) {
-		//[](int word) { return (std::modulus<int>(word, 2) == 0 ? "true" : "false"); }
 		if ((int)word % 2 == 0) {
 			std::cout << "true" << std::endl;
 		}
@@ -89,10 +98,29 @@ int main() {
 	std::cout << "--- END ---" << std::endl;
 
 	//3)
-	std::vector<double> result(1);
-	std::transform(numbers.begin(), numbers.end(), result.begin(), std::plus<double>());
+	std::vector<double> nums(numbers);
+	double result = 0;
+	std::vector<double>::iterator iterat = nums.begin();
+	result = std::accumulate(nums.begin(), nums.end(), 0);
 
-    return 0;
+	std::cout << "--- BEGIN ---" << std::endl;
+	std::cout << result << std::endl;
+	std::cout << "--- END ---" << std::endl;
+
+	result = result / nums.size();
+
+	std::cout << "--- BEGIN ---" << std::endl;
+	std::cout << result << std::endl;
+	std::cout << "--- END ---" << std::endl;
+
+	result = std::accumulate(nums.begin(), nums.end(), 1, std::multiplies<double>());
+
+	std::cout << "--- BEGIN ---" << std::endl;
+	std::cout << result << std::endl;
+	std::cout << "--- END ---" << std::endl;
+
+	
+	return 0;
 }
 
 //template<typename T>

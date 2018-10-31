@@ -1,6 +1,6 @@
 
 #include "GameRules.h"
 
-int GameRules::RulesCheck(int neighbours, int points) {
+int GameRules::RulesCheck(int* neighbours, int points) {
 	return 0;
 }

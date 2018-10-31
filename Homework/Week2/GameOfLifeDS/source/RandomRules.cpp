@@ -11,15 +11,15 @@ RandomRules::RandomRules() {
 }
 
 //Rules based on random numbers
-int RandomRules::RulesCheck(int neighbours, int points) {
+int RandomRules::RulesCheck(int* neighbours, int points) {
 	int newCell = points;
 	if (newCell == 0) {
-		if (neighbours == maxNum) { //Condition for reproduction
+		if (*neighbours == maxNum) { //Condition for reproduction
 			newCell = 1;
 		}
 	}
 	else {
-		if (neighbours > maxNum || neighbours < minNum) { //Condition for death
+		if (*neighbours > maxNum || *neighbours < minNum) { //Condition for death
 			newCell = 0;
 		}
 	}

@@ -4,5 +4,5 @@
 
 class RuleApplier {
 public:
-	void applyRules(GameRules*, int**);
+	void applyRules(GameRules*, int**, int*, int*);
 };

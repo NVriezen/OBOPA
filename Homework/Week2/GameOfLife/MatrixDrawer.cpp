@@ -3,8 +3,6 @@
 #include <iostream>
 #include <time.h>
 
-int timer = 0;
-
 MatrixDrawer::MatrixDrawer(int rows, int columns)
 {
 	dimensions[0] = rows;
@@ -14,8 +12,6 @@ MatrixDrawer::MatrixDrawer(int rows, int columns)
 void MatrixDrawer::drawMatrix(GameRules* rulesChecker, int** point)
 {
 	std::cout << "Drawing size of " << dimensions[0] << "x" << dimensions[1] << std::endl;
-
-	timer++; //timer for slower speed
 
 	//Create a new grid to save the changed values in
 	int** newGrid = new int*[dimensions[1]];
@@ -56,25 +52,16 @@ void MatrixDrawer::drawMatrix(GameRules* rulesChecker, int** point)
 
 	std::cout << std::flush;
 
-	//Making sure the 2D array is initialised with only 0's
 	for (int it = 0; it < dimensions[0]; it++) {
 		for (int ite = 0; ite < dimensions[1]; ite++) {
 			point[ite][it] = newGrid[ite][it];
 		}
 	}
 
-	//if (timer % 5 == 0) {
-	//	timer = 0;
-	//*point = *newGrid;
-	//}
-	//else {
-	//	return point;
-	//}
-	delete[] newGrid;
-	if (newGrid != nullptr) {
-		std::cout << "Memory is NOT emptied" << std::endl;
+	for (int it = 0; it < dimensions[0]; it++) {
+		delete[] newGrid[it];
 	}
-	//return point;
+	delete[] newGrid;
 }
 
 void MatrixDrawer::SetDimensions(int x, int y)

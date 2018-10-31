@@ -2,5 +2,5 @@
 
 class GridDrawer {
 public:
-	void drawGrid(int**);
+	void drawGrid(int**, int*, int*, unsigned char*);
 };

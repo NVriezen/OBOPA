@@ -4,5 +4,5 @@
 
 class NoRules : public GameRules {
 public:
-	int RulesCheck(int, int);
+	int RulesCheck(int*, int) override;
 };

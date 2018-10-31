@@ -36,8 +36,6 @@
 #include "GosperGliderGun.h"
 
 void startColor() {
-	int x, y;
-
 	//set the mode to allow for an extended rotation background
 	videoSetMode(MODE_5_2D);
 	videoSetModeSub(MODE_5_2D);
@@ -55,8 +53,8 @@ void startColor() {
 
 
 	//initialize it with a color
-	for (x = 0; x < 256; x++)
-		for (y = 0; y < 256; y++)
+	for (int x = 0; x < 256; x++)
+		for (int y = 0; y < 256; y++)
 		{
 			videoMemoryMain[x + y * 256] = ARGB16(1, 31, 0, 0);
 			videoMemorySub[x + y * 256] = ARGB16(1, 0, 0, 31);
@@ -65,16 +63,20 @@ void startColor() {
 
 
 GameRules *SetGameRules() {
-	return new OriginalRules;
+	//return new OriginalRules;
 	//return new RandomRules;
-	return new CustomRules;
-	//return new NoRules;
+	//return new CustomRules;
+	return new NoRules;
 }
 	
 //---------------------------------------------------------------------------------
 int main(void) {
 //---------------------------------------------------------------------------------
 	//initVideo();
+
+	int* height = new int(128);
+	int* width = new int(128);
+	unsigned char* multiplier = new unsigned char(2);
 
 	startColor();
 
@@ -88,14 +90,14 @@ int main(void) {
 	GameRules *rules = SetGameRules();
 
 	//Creating 2D Array
-	int** point = new int*[128]; //Make new pointer to pointer
-	for (int a = 0; a < 128; ++a) { //Make new pointer for pointer array
-		point[a] = new int[128]; //
+	int** point = new int*[*height]; //Make new pointer to pointer
+	for (int a = 0; a < *height; ++a) { //Make new pointer for pointer array
+		point[a] = new int[*width];
 	}
 
 	//Making sure the 2D array is initialised with only 0's
-	for (int it = 0; it < 128; it++) {
-		for (int ite = 0; ite < 128; ite++) {
+	for (int it = 0; it < *height; it++) {
+		for (int ite = 0; ite < *width; ite++) {
 			point[ite][it] = 0;
 		}
 	}
@@ -119,8 +121,8 @@ int main(void) {
 	//Our infinite loop to draw the matrix
 	while (true) {
 		//point = ruler->applyRules(rules, point, newGrid);
-		ruler->applyRules(rules, point);
-		grid->drawGrid(point);
+		ruler->applyRules(rules, point, height, width);
+		grid->drawGrid(point, height, width, multiplier);
 
 		swiWaitForVBlank();
 	}
