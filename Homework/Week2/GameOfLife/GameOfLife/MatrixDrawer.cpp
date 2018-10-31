@@ -5,16 +5,23 @@
 
 int timer = 0;
 
-int** MatrixDrawer::drawMatrix(GameRules *rulesChecker, int **point)
+MatrixDrawer::MatrixDrawer(int rows, int columns)
+{
+	dimensions[0] = rows;
+	dimensions[1] = columns;
+}
+
+void MatrixDrawer::drawMatrix(GameRules* rulesChecker, int** point)
 {
 	std::cout << "Drawing size of " << dimensions[0] << "x" << dimensions[1] << std::endl;
 
 	timer++; //timer for slower speed
 
 	//Create a new grid to save the changed values in
-	int** newGrid = new int*[25];
-	for (int g = 0; g < 25; ++g)
-		newGrid[g] = new int[25];
+	int** newGrid = new int*[dimensions[1]];
+	for (int g = 0; g < dimensions[1]; ++g) {
+		newGrid[g] = new int[dimensions[0]];
+	}
 
 	//Loop through the grid
 	for (int y = 0; y < dimensions[1]; y++) {
@@ -49,13 +56,25 @@ int** MatrixDrawer::drawMatrix(GameRules *rulesChecker, int **point)
 
 	std::cout << std::flush;
 
-	if (timer % 5 == 0) {
-		timer = 0;
-		return newGrid;
+	//Making sure the 2D array is initialised with only 0's
+	for (int it = 0; it < dimensions[0]; it++) {
+		for (int ite = 0; ite < dimensions[1]; ite++) {
+			point[ite][it] = newGrid[ite][it];
+		}
 	}
-	else {
-		return point;
+
+	//if (timer % 5 == 0) {
+	//	timer = 0;
+	//*point = *newGrid;
+	//}
+	//else {
+	//	return point;
+	//}
+	delete[] newGrid;
+	if (newGrid != nullptr) {
+		std::cout << "Memory is NOT emptied" << std::endl;
 	}
+	//return point;
 }
 
 void MatrixDrawer::SetDimensions(int x, int y)

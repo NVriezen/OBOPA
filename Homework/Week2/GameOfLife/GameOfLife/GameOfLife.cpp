@@ -27,19 +27,21 @@ GameRules *SetGameRules() {
 
 int main()
 {
-    MatrixDrawer *matrix = new MatrixDrawer();
+	int* height = new int(30);
+	int* width = new int (30);
+    MatrixDrawer *matrix = new MatrixDrawer(*height, *width);
 
     GameRules *rules = SetGameRules();
 
     //Creating 2D Array
-    int** point = new int*[25]; //Make new pointer to pointer
-    for (int a = 0; a < 25; ++a) { //Make new pointer for pointer array
-        point[a] = new int[25]; //
+    int** point = new int*[*height]; //Make new pointer to pointer
+    for (int a = 0; a < *height; ++a) { //Make new pointer for pointer array
+        point[a] = new int[*width]; //
     }
 
     //Making sure the 2D array is initialised with only 0's
-    for (int it = 0; it < 25; it++) {
-        for (int ite = 0; ite < 25; ite++) {
+    for (int it = 0; it < *height; it++) {
+        for (int ite = 0; ite < *width; ite++) {
             point[ite][it] = 0;
         }
     }
@@ -56,12 +58,18 @@ int main()
     //Our infinite loop to draw the matrix
     while (true) {
         system("CLS"); //clear console
-        point = matrix->drawMatrix(rules, point);
+        matrix->drawMatrix(rules, point);
 
         std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
 
     std::cout << "Done" << std::endl;
+	delete height;
+	delete width;
+	delete matrix;
+	delete rules;
+	delete *point;
+	delete point;
 
     return 0;
 }
